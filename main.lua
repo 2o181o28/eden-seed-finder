@@ -690,7 +690,11 @@ function finder:post_start()
 	r=true
 end
 
-function finder:post_update()
+function finder:post_render()
+	if Game():IsPaused() then
+		return
+	end	
+
 	if r then
 		r=false
 		current = current + 1
@@ -712,4 +716,4 @@ function finder:post_update()
 end
 
 finder:AddCallback(ModCallbacks.MC_POST_GAME_STARTED,finder.post_start)
-finder:AddCallback(ModCallbacks.MC_POST_UPDATE,finder.post_update)
+finder:AddCallback(ModCallbacks.MC_POST_RENDER,finder.post_render)

@@ -27,4 +27,4 @@ g++ generator.cpp -o generator -O2
 ./generator > seeds.txt
 ```
 
-Copy the contents of `seeds.txt` to the `seeds_list` in `main.lua`. Launch TBOI, enable this mod (named `eden_seed_finder`), and start a run as regular Eden. Press <kbd>T</kbd>, and the mod will start to search for a seed that contains Mom's Knife in Mom's Chest. All the seeds it find will be printed to the Debug Console, with Eden's DPS stats. Hold <kbd>Y</kbd> if you want to cancel the search.
+Copy the contents of `seeds.txt` to the `seeds_list` in `main.lua`. Launch TBOI, enable this mod (named `eden_seed_finder`), and start a run as regular Eden. Press <kbd>T</kbd>, and the mod will start to search for a seed that contains Mom's Knife in Mom's Chest. All the seeds it found will be printed to the Debug Console, with Eden's DPS stats. Hold <kbd>Y</kbd> if you want to cancel the search.
