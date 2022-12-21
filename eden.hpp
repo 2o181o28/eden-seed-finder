@@ -11,28 +11,49 @@ Modified from https://gist.github.com/bladecoding/5fcc1356bfb0cf26555b0ade7c4fed
 #include"constants.hpp"
 #include"rng.hpp"
 
-uint32_t init_seed(uint32_t startSeed){
-	auto startRng = Rng{startSeed, 0x3, 0x17, 0x19};
-	//Stage Seeds
-	for (int i = 0; i < STAGE_COUNT+1; i++)
-		startRng.next();
-	return startRng.next(); //Seeds::PlayerInitSeed
+// Room::GetSpawnSeed() to Entity::InitSeed
+uint32_t to_entity_seed(uint32_t room_spawn_seed){
+	auto s = Rng{room_spawn_seed, 11}.advance(6);
+	return Rng{s, 35}.next();
 }
 
-uint32_t drop_seed(uint32_t startSeed){
-	auto playerInitSeed = init_seed(startSeed);
+// Game():GetSeeds():GetStageSeed(13) to Room::GetSpawnSeed()
+uint32_t to_room_seed(uint32_t stage_seed){
+	auto s = Rng{stage_seed, 35}.advance(14);
+	return Rng{s, 12}.advance(1);
+}
+
+// Entity::InitSeed for the character and a specific pickup in Home
+std::pair<uint32_t, uint32_t> init_seed(uint32_t startSeed){
+	auto startRng = Rng{startSeed, 0x3, 0x17, 0x19};
+	uint32_t stage_seed{};
+	//Stage Seeds
+	for (int i = 0; i < STAGE_COUNT+1; i++)
+		stage_seed = startRng.next();
+	// stage_seed : Game():GetSeeds():GetStageSeed(13)
+	return {startRng.next(), to_entity_seed(to_room_seed(stage_seed))};
+	 // Seeds::PlayerInitSeed, Entity::InitSeed
+}
+
+std::pair<uint32_t, uint32_t> drop_seed(uint32_t startSeed){
+	auto pa = init_seed(startSeed);
 
 	//These happen inside Player::Init
-	auto playerInitRng = Rng{playerInitSeed, 0x1, 0xB, 0x10};
+	auto playerInitRng = Rng{pa.first, 0x1, 0xB, 0x10};
 	playerInitRng.next();
 	playerInitRng.next();
 	playerInitRng.next();
 	playerInitRng.next();
 	
-	return playerInitRng.next(); //Entity::DropSeed
+	return {playerInitRng.next(), pa.second};
+	 // Entity::DropSeed, Entity::InitSeed
 }
 
 int get_card(uint32_t seed){
+	#ifdef NO_CARD_SEARCH
+	return 0;
+	#endif
+
 	// Note that the shift arguments have changed in Repentance (originally 0x5, 0x9, 0x7)
 	auto cardRng = Rng{seed, 0x3, 0x3, 0x1D};
 	/* DEBUG */ // for a brute-force algorithm to find shift1,shift2,shift3,t
