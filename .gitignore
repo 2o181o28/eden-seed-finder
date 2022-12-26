@@ -1,3 +1,8 @@
+# 1* files are used to allow me to find the laws that determine certain events in the game based on seeds
 1*
+
+# intermediate files
 seeds*.txt
-generator
+generator*
+
+!generator*.cpp

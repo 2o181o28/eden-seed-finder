@@ -20,11 +20,11 @@ Change the `ITEM_COUNT` and `STAGE_COUNT` constants in `constants.hpp` according
 
 ---
 
-The current `generator.cpp` aims to find a Eden seed with the Glowing Hourglass, Sacred Heart or other powerful passive items~~Proptosis/Polyphemus/Brimstone/Mutant Spider, a Strength card/Huge Growth card~~, and the Home floor containing both Mom's Knife and a wild item in the rightmost small room. It is intended for the Beast Ending speedruns. You can easily modify it to search for other items or cards.
+Assume that the generator being used is named `generator.cpp`, and make sure the script being used is named `main.lua`. You can easily modify the existing generators and scripts to search for other items or cards.
 
 ```bash
-g++ generator.cpp -o generator -O2
+g++ generator.cpp -o generator -O2 -std=c++20
 ./generator > seeds.txt
 ```
 
-Copy the contents of `seeds.txt` to the `seeds_list` in `main.lua`. Launch TBOI, enable this mod (named `eden_seed_finder`), and start a run as regular Eden. Press <kbd>T</kbd>, and the mod will start to search for a seed that contains Mom's Knife in Mom's Chest. All the seeds it found will be printed to the Debug Console, with ID of the item in the rightmost small room. Hold <kbd>Y</kbd> if you want to cancel the search.
+Copy the contents of `seeds.txt` to the `seeds_list` in `main.lua`. Launch TBOI, enable this mod (named `eden_seed_finder`), and start a run as regular Eden. If you use `main_tmtrainer.lua`, you need to give yourself TMTRAINER, execute `stage 13` manually, and then enter the corridor below Isaac's bedroom. If you use `main_greed.lua`, start in Greed Mode. Press <kbd>T</kbd>, and the mod will start to search for a seed that meets the corresponding given conditions. All the seeds it found will be printed to the Debug Console, with some additional information. Hold <kbd>Y</kbd> if you want to cancel the search.

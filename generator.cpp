@@ -1,7 +1,12 @@
+/* 
+This `generator.cpp` aims to find a Eden seed with the Glowing Hourglass, Sacred Heart or other powerful passive items, and the Home floor containing both Mom's Knife and a wild item in the rightmost small room. It is intended for the Beast Ending speedruns. 
+*/
 #include<bits/stdc++.h>
 #include"seedstr.hpp"
 //#define SEARCH_FOR_CERTAIN_CARD
+//#define GREED
 #define NO_CARD_SEARCH
+//#define MOMS_CHEST
 #include"eden.hpp"
 #include"item.hpp"
 using namespace std;
@@ -21,8 +26,6 @@ int main(){
 		if(items.activeId==422
 			&& (items.passiveId==114 || items.passiveId==415 || items.passiveId==310 || items.passiveId==182)
 			&& wild_item != 0){
-/*			if((items.passiveId==169 || items.passiveId==261) && items.card==12)
-				continue;*/
 			printf("\"%s\",\n",seed_to_str(seed).data());
 			//break;
 		}

@@ -23,7 +23,11 @@ void init_constants(){
 		int id=strtol(pos+strlen("id=\""),NULL,10);
 		if(id<=0 || id>ITEM_COUNT) continue;
 		
-		if(!strstr(buf,"noeden"))
+		if(!strstr(buf,"noeden")
+		#ifdef GREED
+		 && !strstr(buf, "nogreed")
+		#endif
+		)
 			NO_EDEN[id]=false;
 	}
 	

@@ -13,13 +13,22 @@ Modified from https://gist.github.com/bladecoding/5fcc1356bfb0cf26555b0ade7c4fed
 
 // Room::GetSpawnSeed() to Entity::InitSeed
 uint32_t to_entity_seed(uint32_t room_spawn_seed){
+#ifdef MOMS_CHEST
+	auto s = Rng{room_spawn_seed, 11}.advance(4);
+	return Rng{Rng{s, 35}.next(), 7}.next();
+#else
 	auto s = Rng{room_spawn_seed, 11}.advance(6);
 	return Rng{s, 35}.next();
+#endif
 }
 
 // Game():GetSeeds():GetStageSeed(13) to Room::GetSpawnSeed()
 uint32_t to_room_seed(uint32_t stage_seed){
+#ifdef MOMS_CHEST
+	auto s = Rng{stage_seed, 35}.advance(13);
+#else
 	auto s = Rng{stage_seed, 35}.advance(14);
+#endif
 	return Rng{s, 12}.advance(1);
 }
 
@@ -31,7 +40,13 @@ std::pair<uint32_t, uint32_t> init_seed(uint32_t startSeed){
 	for (int i = 0; i < STAGE_COUNT+1; i++)
 		stage_seed = startRng.next();
 	// stage_seed : Game():GetSeeds():GetStageSeed(13)
-	return {startRng.next(), to_entity_seed(to_room_seed(stage_seed))};
+	return {startRng.next(), 
+	#ifdef GREED
+		0
+	#else
+		to_entity_seed(to_room_seed(stage_seed))
+	#endif
+	};
 	 // Seeds::PlayerInitSeed, Entity::InitSeed
 }
 
@@ -65,10 +80,16 @@ int get_card(uint32_t seed){
 	/* DEBUG END */
 	if (cardRng.next() % 25 == 0) {
 		// 2 more cards in Repentance.
-		int ret = (int)(cardRng.next() % 15) + 42;
+		#ifdef GREED
+			int ret = (int)(cardRng.next() % 14) + 42;
 		
-		if(ret == 55){ret=78;} // Cracked key
-		if(ret == 56){ret=80;} // Wild Card
+			if(ret == 55){ret=80;} // Wild Card
+		#else
+			int ret = (int)(cardRng.next() % 15) + 42;
+		
+			if(ret == 55){ret=78;} // Cracked key
+			if(ret == 56){ret=80;} // Wild Card
+		#endif
 		
 		return ret;
 	}
@@ -120,7 +141,7 @@ EdenItems get_eden_items(uint32_t dropSeed){
 	}
 	
 	#ifdef SEARCH_FOR_CERTAIN_CARD
-	if(card != 12 && card != 52) return {0,0,0};
+	if(card != 42) return {0,0,0};
 	#endif
 	
 	int activeId = 0;
