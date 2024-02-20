@@ -12,7 +12,7 @@ Modified from https://gist.github.com/bladecoding/5fcc1356bfb0cf26555b0ade7c4fed
 #include"rng.hpp"
 
 // Room::GetSpawnSeed() to Entity::InitSeed
-uint32_t to_entity_seed(uint32_t room_spawn_seed){
+u32 to_entity_seed(u32 room_spawn_seed){
 #ifdef MOMS_CHEST
 	auto s = Rng{room_spawn_seed, 11}.advance(4);
 	return Rng{Rng{s, 35}.next(), 7}.next();
@@ -23,7 +23,7 @@ uint32_t to_entity_seed(uint32_t room_spawn_seed){
 }
 
 // Game():GetSeeds():GetStageSeed(13) to Room::GetSpawnSeed()
-uint32_t to_room_seed(uint32_t stage_seed){
+u32 to_room_seed(u32 stage_seed){
 #ifdef MOMS_CHEST
 	auto s = Rng{stage_seed, 35}.advance(13);
 #else
@@ -33,9 +33,9 @@ uint32_t to_room_seed(uint32_t stage_seed){
 }
 
 // Entity::InitSeed for the character and a specific pickup in Home
-std::pair<uint32_t, uint32_t> init_seed(uint32_t startSeed){
+std::pair<u32, u32> init_seed(u32 startSeed){
 	auto startRng = Rng{startSeed, 0x3, 0x17, 0x19};
-	uint32_t stage_seed{};
+	u32 stage_seed{};
 	//Stage Seeds
 	for (int i = 0; i < STAGE_COUNT+1; i++)
 		stage_seed = startRng.next();
@@ -50,7 +50,7 @@ std::pair<uint32_t, uint32_t> init_seed(uint32_t startSeed){
 	 // Seeds::PlayerInitSeed, Entity::InitSeed
 }
 
-std::pair<uint32_t, uint32_t> drop_seed(uint32_t startSeed){
+std::pair<u32, u32> drop_seed(u32 startSeed){
 	auto pa = init_seed(startSeed);
 
 	//These happen inside Player::Init
@@ -64,7 +64,7 @@ std::pair<uint32_t, uint32_t> drop_seed(uint32_t startSeed){
 	 // Entity::DropSeed, Entity::InitSeed
 }
 
-int get_card(uint32_t seed){
+int get_card(u32 seed){
 	#ifdef NO_CARD_SEARCH
 	return 0;
 	#endif
@@ -94,7 +94,7 @@ int get_card(uint32_t seed){
 		return ret;
 	}
 	
-	// The checks of Runes and Playing card are remove in Repentance, too.
+	// The checks of Runes and Playing cards are remove in Repentance, too.
 /*	if (cardRng.next() % 10 == 0)
 	{
 		//Rune
@@ -119,7 +119,7 @@ struct EdenItems{
 	int activeId, passiveId, card;
 };
 
-EdenItems get_eden_items(uint32_t dropSeed){
+EdenItems get_eden_items(u32 dropSeed){
 	auto rng = Rng{dropSeed, 0x1, 0x5, 0x13};
 	
 //	int trinket = 0;
@@ -166,18 +166,50 @@ EdenItems get_eden_items(uint32_t dropSeed){
 			break;
 
 	}
-	
-	//Hearts and SoulHearts are actually done in Player::Init
-/*	var healthRng = new Rng(dropSeed, 0x1, 0x5, 0x13);
-	var halfHearts = (int)healthRng.Next() & 3;
-	hearts = halfHearts * 2;
-	soulHearts = ((int)healthRng.Next() % (4 - halfHearts)) * 2;
-	if (hearts == 0 && soulHearts < 4)
-	 	soulHearts = 4;
-*/		
-	
-	
+
 	return EdenItems{activeId, passiveId, card};
+}
+
+// from [0,1) to p.MaxFireDelay; see https://bindingofisaacrebirth.fandom.com/wiki/Tears
+double to_delay(double t){
+	t=t*1.5-0.75;
+	if(t<0)t*=0.68; // FIXME: precise formula unknown
+
+	if(t>=0)return 16-6*sqrt(t*1.3+1);
+	if(t>-0.77)return 16-6*sqrt(t*1.3+1)-6*t;
+	return 16-6*t;
+}
+
+// from [0,1) to p.Damage
+double to_damage(double t){return 2*t+2.5;}
+
+struct EdenStats{
+	int hearts, soul_hearts, coins, keys, bombs;
+	double delay, damage;
+};
+
+EdenStats get_eden_stats(u32 drop_seed){
+	//Hearts and SoulHearts are actually done in Player::Init
+	auto rng = Rng{drop_seed, 2};
+	auto halfHearts = rng.next() & 3;
+	EdenStats res={};
+	res.hearts = halfHearts * 2;
+	res.soul_hearts = (rng.next() % (4 - halfHearts)) * 2;
+	if (res.hearts == 0 && res.soul_hearts < 4)
+		res.soul_hearts = 4;
+	if(rng.next()%3==0 || rng.next()%2==0){
+		// No coins / bombs / keys. 
+	}else{
+		switch(rng.next()%3){
+			case 0: res.coins=rng.next()%5+1; break;
+			case 1: res.keys=1; break;
+			case 2: res.bombs=rng.next()%2+1;
+		}
+	}
+	res.damage = to_damage((double)rng.next()/(1ll<<32));
+	rng.next(); // meaning unknown; most likely for another stat
+	res.delay = to_delay((double)rng.next()/(1ll<<32));
+	return res;
 }
 
 #endif

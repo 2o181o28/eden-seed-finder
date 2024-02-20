@@ -2,6 +2,10 @@
 #ifndef RNG_H
 #define RNG_H 1
 
+#include<bits/stdc++.h>
+
+using u32 = uint32_t;
+
 // https://www.jstatsoft.org/article/view/v008i14/xorshift.pdf
 const int SHIFT_TB[][3] = {
  {1, 3,10}, { 1, 5,16}, { 1, 5,19}, { 1, 9,29}, { 1,11, 6}, { 1,11,16}, { 1,19, 3}, { 1,21,20}, { 1,27,27}, 
@@ -18,9 +22,9 @@ const int SHIFT_TB_LEN = sizeof(SHIFT_TB) / sizeof(int) / 3;
 static_assert(SHIFT_TB_LEN == 81, "unreachable!");
 
 struct Rng{
-	uint32_t seed;
+	u32 seed;
 	int shift1, shift2, shift3;
-	uint32_t next(){
+	u32 next(){
 		auto num = seed;
 		num ^= num >> shift1;
 		num ^= num << shift2;
@@ -28,22 +32,84 @@ struct Rng{
 		return seed = num;
 	}
 	
-	uint32_t advance(uint32_t k){
-		uint32_t res;
+	u32 advance(u32 k){
+		u32 res;
 		do{
 			res = next();
 		}while(k--);
 		return res;
 	}
 	
-	Rng(uint32_t s, int s1, int s2, int s3):
+	Rng(u32 s, int s1, int s2, int s3):
 		seed(s), shift1(s1), shift2(s2), shift3(s3){}
 	
 	// RNG::SetSeed
-	Rng(uint32_t s, int idx): seed(s){
+	Rng(u32 s, int idx): seed(s){
 		shift1 = SHIFT_TB[idx][0];
 		shift2 = SHIFT_TB[idx][1];
 		shift3 = SHIFT_TB[idx][2];
+	}
+};
+
+struct Matrix{
+	u32 a[32];
+	Matrix operator* (const Matrix& rhs) const{
+		Matrix c{};
+		for(int i=0;i<32;i++)
+			for(u32 t=a[i];t;t&=t-1)
+				c.a[i] ^= rhs.a[std::countr_zero(t)];
+		return c;
+	}
+	
+	static Matrix eye(){
+		Matrix c{};
+		for(int i=0;i<32;i++)c.a[i] = 1u<<i;
+		return c;
+	}
+	
+	Matrix pow(int k)const{
+		Matrix c=eye(), a=*this;
+		for(;k;k/=2,a=a*a)if(k&1)c=c*a;
+		return c;
+	}
+	
+	Matrix inv()const{
+		uint64_t b[32];
+		for(int i=0;i<32;i++)b[i]=a[i] | 1ull<<(i+32);
+		for(int i=0;i<32;i++){
+			int mp=-1;
+			for(int j=i;j<32;j++)if(b[j]>>i&1){
+				mp=j; break;
+			}
+			assert(~mp);std::swap(b[mp],b[i]);
+			for(int j=0;j<32;j++)
+				if(j!=i && (b[j]>>i&1))b[j]^=b[i];
+		}
+		Matrix c{};
+		for(int i=0;i<32;i++)c.a[i]=b[i]>>32;
+		return c;
+	}
+	
+	u32 operator* (u32 k) const{
+		u32 res = 0;
+		for(int i=0;i<32;i++)res |= u32(__builtin_parity(a[i]&k))<<i;
+		return res;
+	}
+	
+	static Matrix xorshiftl(int k){
+		Matrix c=eye();
+		for(int i=k;i<32;i++)c.a[i] ^= 1u<<(i-k);
+		return c;
+	}
+	
+	static Matrix xorshiftr(int k){
+		Matrix c=eye();
+		for(int i=0;i+k<32;i++)c.a[i] ^= 1u<<(i+k);
+		return c;
+	}
+	
+	static Matrix from_rng(const Rng& r){
+		return xorshiftr(r.shift3) * xorshiftl(r.shift2) * xorshiftr(r.shift1);
 	}
 };
 
