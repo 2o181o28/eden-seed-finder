@@ -1,12 +1,10 @@
 /*
-this `generator.cpp` aims to find a greed mode seed that Eden starts with Dad's key, 9 Volt/Sharp Plug and a Chaos card, and almost all the greed exit rooms has no enemies. It is intended for greed mode speedruns.
+this `generator.cpp` aims to find a normal mode seed that Eden starts with Delirious, Scapular/Cancer and an Emperor card. It is intended for repentance+.
 */
 #include<bits/stdc++.h>
 #include"seedstr.hpp"
-#define SEARCH_FOR_CERTAIN_CARD 42 
-#define GREED
+#define SEARCH_FOR_CERTAIN_CARD 5
 #define NO_HOME
-//#define NO_CARD_SEARCH
 //#define MOMS_CHEST
 #include"eden.hpp"
 #include"item.hpp"
@@ -24,9 +22,9 @@ int main(){
 		EdenItems items=get_eden_items(dseed);
 //		cout<<items.activeId<<" "<<items.passiveId<<" "<<items.card<<endl;
 		
-		if(items.activeId==175
-			&& (items.passiveId==116 || items.passiveId==205)
-			&& items.card == 42){
+		if(items.activeId==510
+			&& (items.passiveId==142 || items.passiveId==301)
+			&& items.card == 5){
 			printf("\"%s\",\n",seed_to_str(seed).data());
 			//break;
 		}

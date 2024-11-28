@@ -35,13 +35,13 @@ u32 to_room_seed(u32 stage_seed){
 // Entity::InitSeed for the character and a specific pickup in Home
 std::pair<u32, u32> init_seed(u32 startSeed){
 	auto startRng = Rng{startSeed, 0x3, 0x17, 0x19};
-	u32 stage_seed{};
+	[[maybe_unused]] u32 stage_seed{};
 	//Stage Seeds
 	for (int i = 0; i < STAGE_COUNT+1; i++)
 		stage_seed = startRng.next();
 	// stage_seed : Game():GetSeeds():GetStageSeed(13)
 	return {startRng.next(), 
-	#ifdef GREED
+	#ifdef NO_HOME
 		0
 	#else
 		to_entity_seed(to_room_seed(stage_seed))
@@ -141,7 +141,7 @@ EdenItems get_eden_items(u32 dropSeed){
 	}
 	
 	#ifdef SEARCH_FOR_CERTAIN_CARD
-	if(card != 42) return {0,0,0};
+	if(card != SEARCH_FOR_CERTAIN_CARD) return {0,0,0};
 	#endif
 	
 	int activeId = 0;
@@ -185,7 +185,7 @@ double to_damage(double t){return 2*t+2.5;}
 
 struct EdenStats{
 	int hearts, soul_hearts, coins, keys, bombs;
-	double delay, damage;
+	double delay, damage, speed;
 };
 
 EdenStats get_eden_stats(u32 drop_seed){
@@ -207,7 +207,7 @@ EdenStats get_eden_stats(u32 drop_seed){
 		}
 	}
 	res.damage = to_damage((double)rng.next()/(1ll<<32));
-	rng.next(); // meaning unknown; most likely for another stat
+	res.speed = (double)rng.next()/(1ll<<32)*0.3+0.85;
 	res.delay = to_delay((double)rng.next()/(1ll<<32));
 	return res;
 }
