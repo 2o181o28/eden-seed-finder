@@ -172,16 +172,14 @@ EdenItems get_eden_items(u32 dropSeed){
 
 // from [0,1) to p.MaxFireDelay; see https://bindingofisaacrebirth.fandom.com/wiki/Tears
 double to_delay(double t){
-	t=t*1.5-0.75;
-	if(t<0)t*=0.68; // FIXME: precise formula unknown
-
-	if(t>=0)return 16-6*sqrt(t*1.3+1);
-	if(t>-0.77)return 16-6*sqrt(t*1.3+1)-6*t;
-	return 16-6*t;
+	t=t*1.5-0.75; // t in [-0.75,0.75)
+	if(t<0) return 16-6*sqrt(t*1.3+1)-t*6; 
+	else return 16-6*sqrt(t*1.3+1);
 }
 
 // from [0,1) to p.Damage
 double to_damage(double t){return 2*t+2.5;}
+double to_speed(double t){return 0.3*t+0.85;}
 
 struct EdenStats{
 	int hearts, soul_hearts, coins, keys, bombs;
@@ -191,12 +189,11 @@ struct EdenStats{
 EdenStats get_eden_stats(u32 drop_seed){
 	//Hearts and SoulHearts are actually done in Player::Init
 	auto rng = Rng{drop_seed, 2};
-	auto halfHearts = rng.next() & 3;
 	EdenStats res={};
-	res.hearts = halfHearts * 2;
-	res.soul_hearts = (rng.next() % (4 - halfHearts)) * 2;
-	if (res.hearts == 0 && res.soul_hearts < 4)
-		res.soul_hearts = 4;
+	res.hearts = rng.next() & 3;
+	res.soul_hearts = (rng.next() % (4 - hearts));
+	if (res.hearts == 0 && res.soul_hearts < 2)
+		res.soul_hearts = 2;
 	if(rng.next()%3==0 || rng.next()%2==0){
 		// No coins / bombs / keys. 
 	}else{
@@ -207,7 +204,7 @@ EdenStats get_eden_stats(u32 drop_seed){
 		}
 	}
 	res.damage = to_damage((double)rng.next()/(1ll<<32));
-	res.speed = (double)rng.next()/(1ll<<32)*0.3+0.85;
+	res.speed = to_speed((double)rng.next()/(1ll<<32));
 	res.delay = to_delay((double)rng.next()/(1ll<<32));
 	return res;
 }
