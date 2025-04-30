@@ -64,7 +64,7 @@ std::pair<u32, u32> drop_seed(u32 startSeed){
 	 // Entity::DropSeed, Entity::InitSeed
 }
 
-int get_card(u32 seed){
+int get_card(u32 seed, bool playing=false){
 	#ifdef NO_CARD_SEARCH
 	return 0;
 	#endif
@@ -94,16 +94,16 @@ int get_card(u32 seed){
 		return ret;
 	}
 	
-	// The checks of Runes and Playing cards are remove in Repentance, too.
+	// The RNG used for checks of Runes and Playing cards are removed in Repentance, too.
 /*	if (cardRng.next() % 10 == 0)
 	{
 		//Rune
-	}
-	if (cardRng.next() % 5 == 0 && false)
+	} */
+	if (playing && cardRng.next() % 5 == 0)
 	{
 		//Playing card
 		return (int)(cardRng.next() % 9) + 23;
-	}*/
+	}
 	
 	int ret = (int)(cardRng.next() % 22) + 1;
 	

@@ -1,6 +1,6 @@
 # eden-seed-finder
 
-Find a seed of The Binding of Isaac: Repentance that Eden starts with certain items, cards, health, pickups or stats, and the Home floor has some specific pickups. It works for Repentace v1.7.9b and Repentance+ v1.9.7.8.
+Find a seed of The Binding of Isaac: Repentance that Eden starts with certain items, cards, health, pickups or stats, and the Home floor has some specific pickups. It works for Repentace v1.7.9b and Repentance+.
 
 ## Usage
 

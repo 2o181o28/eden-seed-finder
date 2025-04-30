@@ -18,6 +18,7 @@ void init_constants(){
 	char buf[2010];
 	
 	while(s.getline(buf,sizeof buf)){
+		if(strstr(buf,"!--")) continue; // skip comment
 		char *pos=strstr(buf,"id=\"");
 		if(!pos) continue;
 		int id=strtol(pos+strlen("id=\""),NULL,10);
@@ -36,6 +37,7 @@ void init_constants(){
 	assert(s.is_open());
 	
 	while(s.getline(buf,sizeof buf)){
+		if(strstr(buf,"!--")) continue; // skip comment
 		char *pos=strstr(buf,"id=\"");
 		if(!pos) continue;
 		int id=strtol(pos+strlen("id=\""),NULL,10);
