@@ -11,6 +11,8 @@ Modified from https://gist.github.com/bladecoding/5fcc1356bfb0cf26555b0ade7c4fed
 #include"constants.hpp"
 #include"rng.hpp"
 
+u32 STAGE_SEED[STAGE_COUNT + 1];
+
 // Room::GetSpawnSeed() to Entity::InitSeed
 u32 to_entity_seed(u32 room_spawn_seed){
 #ifdef MOMS_CHEST
@@ -38,7 +40,7 @@ std::pair<u32, u32> init_seed(u32 startSeed){
 	[[maybe_unused]] u32 stage_seed{};
 	//Stage Seeds
 	for (int i = 0; i < STAGE_COUNT+1; i++)
-		stage_seed = startRng.next();
+		STAGE_SEED[i] = startRng.next();
 	// stage_seed : Game():GetSeeds():GetStageSeed(13)
 	return {startRng.next(), 
 	#ifdef NO_HOME

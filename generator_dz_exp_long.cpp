@@ -1,5 +1,5 @@
 /* 
-This `generator.cpp` aims to find a Eden seed with Experimental Treatment, low stats and no bombs. Its purpose is to find the worst seeds.
+This `generator.cpp` aims to find a Eden seed with Experimental Treatment, low stats and bad items in boss rooms. Its purpose is to find the worst seeds.
 */
 #include<bits/stdc++.h>
 #include"seedstr.hpp"
@@ -9,6 +9,7 @@ This `generator.cpp` aims to find a Eden seed with Experimental Treatment, low s
 #define NO_CARD_SEARCH
 //#define MOMS_CHEST
 #include"eden.hpp"
+#include"item.hpp"
 using namespace std;
 using ll=long long;
 
@@ -39,8 +40,21 @@ int main(){
 			auto stats=get_eden_stats(dseed);
 	//		cout<<items.activeId<<" "<<items.passiveId<<" "<<items.card<<endl;
 			auto dps=(30/(stats.delay+1)-0.5)*(stats.damage-1);
-			if(stats.bombs==0 && dps<=2.45){
+			if(dps<=3){
+				ITEM_BLACKLIST[items.activeId]=ITEM_BLACKLIST[items.passiveId]=1;
+				auto backup=ITEM_POOLS;
+				shuffle_item_pools(seed);
+				for(int stg=1;stg<=3;stg++){
+					// award seed of boss room
+					// only works when "Map Generated in 1 Loop" (high probability)
+					auto award_seed=Rng{Rng{STAGE_SEED[stg], 35}.advance(4), 12}.advance(2);
+					auto boss_item_id=get_collectible(2,true,Rng{award_seed, 35}.next());
+					CUR_ROOM_BLACKLIST[boss_item_id]=0;
+					if(items_eval[boss_item_id])goto fail;
+				}
 				printf("\"%s\",\n",seed_to_str(seed).data());
+				fail: memset(ITEM_BLACKLIST, 0, sizeof ITEM_BLACKLIST);
+				ITEM_POOLS=backup;
 			}
 		}
 	}

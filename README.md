@@ -13,10 +13,11 @@ Extract Isaac's resources with `/path/to/tboi/tools/ResourceExtractor/ResourceEx
 ```bash
 cp /path/to/tboi/resources-dlc3/items.xml \
    /path/to/tboi/resources-dlc3/items_metadata.xml \
+   /path/to/tboi/resources-dlc3/itempools.xml \
    item_data/
 ```
 
-Change the `ITEM_COUNT` and `STAGE_COUNT` constants in `constants.hpp` according to your Isaac version.
+Change the `ITEM_COUNT`, `STAGE_COUNT` and `ITEM_POOLS_COUNT` constants in `constants.hpp` according to your Isaac version.
 
 ---
 
