@@ -4,7 +4,7 @@ Find a seed of The Binding of Isaac: Repentance that Eden starts with certain it
 
 ## Usage
 
-put this folder in `/path/to/tboi/mods` (the directory where Isaac stores your mods).
+put this folder in `/path/to/tboi/mods` (the directory where Isaac stores your mods). For Repentace v1.7.9b, you need to move all `*_rep.xml` to `*.xml` in `item_data/` directory.
 
 ### For other versions of TBOI
 
