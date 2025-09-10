@@ -55,7 +55,7 @@
     <item id="55" quality="1" tags="summonable mom offensive"/>
     <item id="56" quality="0" tags="offensive"/>
     <item id="57" quality="1" tags="summonable monstermanual offensive fly"/>
-    <item id="58" quality="3" craftquality="2" tags="book offensive"/>
+    <item id="58" quality="3" craftquality="2" tags="book"/>
     <item id="59" quality="0" tags=""/>
     <item id="60" quality="1" tags="nolostbr summonable"/>
     <item id="62" quality="2" tags="nolostbr summonable nocantrip"/>
@@ -122,7 +122,7 @@
     <item id="123" quality="1" tags="book offensive"/>
     <item id="124" quality="1" tags="offensive"/>
     <item id="125" quality="1" tags="summonable offensive"/>
-    <item id="126" quality="0" tags="nolostbr"/>
+    <item id="126" quality="0" tags="nolostbr devilsacrifice"/>
     <item id="127" quality="3" tags="offensive nocantrip"/>
     <item id="128" quality="1" tags="summonable monstermanual offensive fly"/>
     <item id="129" quality="1" tags="nolostbr"/>
@@ -153,7 +153,7 @@
     <item id="154" quality="2" tags="summonable offensive"/>
     <item id="155" quality="2" tags="summonable monstermanual offensive"/>
     <item id="156" quality="2" tags="nolostbr summonable nocantrip"/>
-    <item id="157" quality="2" tags="nolostbr summonable"/>
+    <item id="157" quality="2" tags="nolostbr summonable devilsacrifice"/>
     <item id="158" quality="3" tags="offensive stars lazarussharedglobal"/>
     <item id="159" quality="3" tags="devil nolostbr summonable"/>
     <item id="160" quality="1" tags="offensive"/>
@@ -182,7 +182,7 @@
     <item id="183" quality="3" tags="summonable tearsup offensive"/>
     <item id="184" quality="3" tags="nolostbr summonable angel"/>
     <item id="185" quality="3" tags="nolostbr summonable angel"/>
-    <item id="186" quality="0" tags="nolostbr"/>
+    <item id="186" quality="0" tags="nolostbr devilsacrifice"/>
     <item id="187" quality="1" tags="summonable guppy offensive"/>
     <item id="188" quality="0" tags="summonable baby monstermanual offensive"/>
     <item id="189" quality="3" tags="summonable tearsup offensive"/>
@@ -221,7 +221,7 @@
     <item id="222" quality="1" tags="summonable tearsup offensive"/>
     <item id="223" quality="4" tags="summonable"/>
     <item id="224" quality="3" tags="summonable dead tearsup offensive"/>
-    <item id="225" quality="2" tags="nolostbr summonable"/>
+    <item id="225" quality="2" tags="nolostbr summonable devilsacrifice"/>
     <item id="226" quality="2" tags="nolostbr"/>
     <item id="227" quality="1" tags="nolostbr summonable"/>
     <item id="228" quality="2" tags="summonable mom tearsup offensive"/>
@@ -385,7 +385,7 @@
     <item id="387" quality="2" tags="summonable"/>
     <item id="388" quality="0" tags="summonable offensive"/>
     <item id="389" quality="3" tags="summonable offensive nocantrip"/>
-    <item id="390" quality="3" tags="summonable baby monstermanual offensive"/>
+    <item id="390" quality="3" tags="summonable baby monstermanual offensive angel"/>
     <item id="391" quality="1" tags="summonable offensive"/>
     <item id="392" quality="1" tags="summonable offensive stars"/>
     <item id="393" quality="2" tags="summonable offensive"/>
@@ -417,7 +417,7 @@
     <item id="419" quality="3" tags="offensive"/>
     <item id="420" quality="0" tags="summonable offensive"/>
     <item id="421" quality="0" tags="offensive"/>
-    <item id="422" quality="3" craftquality="-1" tags="offensive nocantrip"/>
+    <item id="422" quality="3" craftquality="-1" tags="nocantrip"/>
     <item id="423" quality="2" tags="summonable"/>
     <item id="424" quality="3" tags="summonable offensive"/>
     <item id="425" quality="1" tags="summonable"/>
@@ -469,7 +469,7 @@
     <item id="471" quality="2" tags="summonable monstermanual offensive"/>
     <item id="472" quality="1" tags="summonable baby offensive"/>
     <item id="473" quality="1" tags="summonable monstermanual offensive"/>
-    <item id="474" quality="0" tags=""/>
+    <item id="474" quality="0" tags="noeden"/>
     <item id="475" quality="0" tags="offensive"/>
     <item id="476" quality="2" tags="offensive"/>
     <item id="477" quality="3" tags="offensive nocantrip"/>
@@ -564,7 +564,7 @@
     <item id="566" quality="2" tags="summonable offensive nocantrip lazarussharedglobal"/>
     <item id="567" quality="3" tags="uniquefamiliar summonable tearsup offensive nocantrip"/>
     <item id="568" quality="1" tags="angel"/>
-    <item id="569" quality="1" tags="uniquefamiliar nolostbr summonable"/>
+    <item id="569" quality="1" tags="uniquefamiliar nolostbr summonable devilsacrifice"/>
     <item id="570" quality="2" tags="summonable offensive"/>
     <item id="571" quality="2" tags="nolostbr summonable"/>
     <item id="572" quality="3" tags="devil summonable offensive"/>
@@ -660,7 +660,7 @@
     <item id="669" quality="3" tags="summonable tearsup offensive lazarussharedglobal"/>
     <item id="670" quality="2" tags="summonable offensive nogreed"/>
     <item id="671" quality="1" tags="nolostbr summonable"/>
-    <item id="672" quality="0" tags="summonable nokeeper nogreed"/>
+    <item id="672" quality="0" tags="summonable nokeeper nogreed devilsacrifice"/>
     <item id="673" quality="2" tags="summonable offensive lazarusshared"/>
     <item id="674" quality="1" tags=""/>
     <item id="675" quality="1" tags="nolostbr summonable"/>
@@ -680,10 +680,10 @@
     <item id="689" quality="4" tags="summonable offensive nocantrip"/>
     <item id="690" quality="3" tags="summonable"/>
     <item id="691" quality="4" tags="summonable offensive nocantrip angel"/>
-    <item id="692" quality="1" tags="nolostbr summonable lazarussharedglobal"/>
+    <item id="692" quality="1" tags="nolostbr summonable lazarussharedglobal devilsacrifice"/>
     <item id="693" quality="2" tags="summonable fly"/>
     <item id="694" quality="3" tags="summonable"/>
-    <item id="695" quality="2" tags="nolostbr summonable tearsup"/>
+    <item id="695" quality="2" tags="nolostbr summonable tearsup devilsacrifice"/>
     <item id="696" quality="3" tags="summonable offensive angel"/>
     <item id="697" quality="1" tags="uniquefamiliar offensive lazarusshared nogreed"/>
     <item id="698" quality="4" tags="summonable baby monstermanual offensive"/>
@@ -692,7 +692,7 @@
     <item id="701" quality="2" tags="summonable offensive"/>
     <item id="702" quality="1" tags="nolostbr summonable"/>
     <item id="703" quality="1" craftquality="2" tags="offensive nocantrip"/>
-    <item id="704" quality="1" tags="offensive"/>
+    <item id="704" quality="1" tags="offensive devilsacrifice"/>
     <item id="705" quality="1" tags="offensive"/>
     <item id="706" quality="3" tags="offensive nocantrip"/>
     <item id="707" quality="1" tags="nolostbr food"/>
@@ -735,7 +735,7 @@
     <trinket id="13" quality="0" tags=""/>
     <trinket id="14" quality="0" tags=""/>
     <trinket id="15" quality="0" tags=""/>
-    <trinket id="16" quality="0" tags="mom"/>
+    <trinket id="16" quality="0" tags=""/>
     <trinket id="17" quality="0" tags="nogreed"/>
     <trinket id="18" quality="0" tags="nogreed"/>
     <trinket id="19" quality="0" tags=""/>
@@ -757,7 +757,7 @@
     <trinket id="35" quality="0" tags=""/>
     <trinket id="36" quality="0" tags="nogreed"/>
     <trinket id="37" quality="0" tags=""/>
-    <trinket id="38" quality="0" tags="mom nogreed"/>
+    <trinket id="38" quality="0" tags="nogreed"/>
     <trinket id="39" quality="0" tags=""/>
     <trinket id="40" quality="0" tags=""/>
     <trinket id="41" quality="0" tags="nogreed"/>
@@ -805,7 +805,7 @@
     <trinket id="84" quality="0" tags="lazarussharedglobal nogreed"/>
     <trinket id="85" quality="0" tags="nogreed"/>
     <trinket id="86" quality="0" tags=""/>
-    <trinket id="87" quality="0" tags="mom"/>
+    <trinket id="87" quality="0" tags=""/>
     <trinket id="88" quality="0" tags=""/>
     <trinket id="89" quality="0" tags=""/>
     <trinket id="90" quality="0" tags=""/>
@@ -871,10 +871,10 @@
     <trinket id="150" quality="0" tags=""/>
     <trinket id="151" quality="0" tags=""/>
     <trinket id="152" quality="0" tags="lazarussharedglobal nogreed"/>
-    <trinket id="153" quality="0" tags="mom"/>
+    <trinket id="153" quality="0" tags=""/>
     <trinket id="154" quality="0" tags=""/>
     <trinket id="155" quality="0" tags="lazarussharedglobal nogreed"/>
-    <trinket id="156" quality="0" tags="mom"/>
+    <trinket id="156" quality="0" tags=""/>
     <trinket id="157" quality="0" tags=""/>
     <trinket id="158" quality="0" tags=""/>
     <trinket id="159" quality="0" tags=""/>

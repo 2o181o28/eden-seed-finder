@@ -184,7 +184,7 @@
 	<passive cache="shotspeed firedelay" description="#TOOTH_PICKS_DESCRIPTION" gfx="Collectibles_183_ToothPicks.png" id="183" name="#TOOTH_PICKS_NAME" />
 	<passive cache="flying" description="#HOLY_GRAIL_DESCRIPTION" gfx="Collectibles_184_HolyGrail.png" hearts="4" id="184" maxhearts="2" name="#HOLY_GRAIL_NAME" devilprice="2" />
 	<passive cache="flying tearflag tearcolor" description="#DEAD_DOVE_DESCRIPTION" gfx="Collectibles_185_DeadDove.png" id="185" name="#DEAD_DOVE_NAME" devilprice="2" />
-	<active achievement="56" description="#BLOOD_RIGHTS_DESCRIPTION" gfx="Collectibles_186_BloodRights.png" id="186" maxcharges="0" name="#BLOOD_RIGHTS_NAME" />
+	<active achievement="56" description="#BLOOD_RIGHTS_DESCRIPTION" gfx="Collectibles_186_BloodRights.png" id="186" maxcharges="0" name="#BLOOD_RIGHTS_NAME" cache="firedelay"/>
 	<familiar achievement="65" description="#GUPPYS_HAIRBALL_DESCRIPTION" gfx="Collectibles_187_GuppysHairball.png" id="187" name="#GUPPYS_HAIRBALL_NAME" />
 	<familiar achievement="51" description="#ABEL_DESCRIPTION" gfx="Collectibles_188_Abel.png" id="188" name="#ABEL_NAME" />
 	<passive achievement="63" cache="firedelay damage speed range" description="#SMB_SUPER_FAN_DESCRIPTION" gfx="Collectibles_189_SMBSuperFan.png" hearts="99" id="189" maxhearts="2" name="#SMB_SUPER_FAN_NAME" />
@@ -355,7 +355,7 @@
 	<active description="#PLACEBO_DESCRIPTION" gfx="Collectibles_348_Placebo.png" id="348" name="#PLACEBO_NAME" shopprice="10" maxcharges="4" />
 	<active achievement="244" description="#WOODEN_NICKEL_DESCRIPTION" gfx="Collectibles_349_WoodenNickel.png" id="349" name="#WOODEN_NICKEL_NAME" shopprice="10" maxcharges="1" />
 	<passive description="#TOXIC_SHOCK_DESCRIPTION" gfx="Collectibles_350_ToxicShock.png" id="350" name="#TOXIC_SHOCK_NAME" cache="color" />
-	<active description="#MEGA_BEAN_DESCRIPTION" gfx="Collectibles_351_MegaBean.png" id="351" name="#MEGA_BEAN_NAME" maxcharges="4" />
+	<active description="#MEGA_BEAN_DESCRIPTION" gfx="Collectibles_351_MegaBean.png" id="351" name="#MEGA_BEAN_NAME" maxcharges="6" />
 	<active description="#GLASS_CANNON_DESCRIPTION" gfx="Collectibles_352_GlassCannon.png" id="352" name="#GLASS_CANNON_NAME" maxcharges="110" chargetype="timed" />
 	<passive description="#BOMBER_BOY_DESCRIPTION" gfx="Collectibles_353_BomberBoy.png" id="353" name="#BOMBER_BOY_NAME" bombs="5" />
 	<passive description="#CRACK_JACKS_DESCRIPTION" gfx="Collectibles_354_CrackJacks.png" id="354" name="#CRACK_JACKS_NAME" maxhearts="2" hearts="4" />
@@ -579,7 +579,7 @@
 	
 <!-- REPENTANCE BEGIN -->
 	<passive	id="553"	gfx="Collectibles_553_Mucormycosis.png" name="#MUCORMYCOSIS_NAME" description="#MUCORMYCOSIS_DESCRIPTION" cache="tearcolor" />
-	<passive	id="554"	gfx="Collectibles_554_2Spooky.png" name="#2SPOOKY_NAME" description="#2SPOOKY_DESCRIPTION" cache="color" />
+	<passive	id="554"	gfx="Collectibles_554_2Spooky.png" name="#2SPOOKY_NAME" description="#2SPOOKY_DESCRIPTION" cache="color firedelay shotspeed" />
 	<active		id="555"	achievement="583" gfx="Collectibles_555_GoldenRazor.png" name="#GOLDEN_RAZOR_NAME" description="#GOLDEN_RAZOR_DESCRIPTION" maxcharges="0" cache="damage" coins="5" />
 	<active		id="556"	gfx="Collectibles_556_Sulfur.png" name="#SULFUR_NAME" description="#SULFUR_DESCRIPTION" maxcharges="3" />
 	<active		id="557"	gfx="Collectibles_557_FortuneCookie.png" name="#FORTUNE_COOKIE_NAME" description="#FORTUNE_COOKIE_DESCRIPTION" maxcharges="2" />
@@ -618,7 +618,7 @@
 	<passive	id="590"	gfx="Collectibles_590_Mercurius.png" name="#MERCURIUS_NAME" description="#MERCURIUS_DESCRIPTION" cache="speed" />
 	<passive	id="591"	gfx="Collectibles_591_Venus.png" name="#VENUS_NAME" description="#VENUS_DESCRIPTION" maxhearts="2" hearts="4" />
 	<passive	id="592"	gfx="Collectibles_592_Terra.png" name="#TERRA_NAME" description="#TERRA_DESCRIPTION" cache="damage tearflag" />
-	<passive	id="593"	gfx="Collectibles_593_Mars.png" name="#MARS_NAME" description="#MARS_DESCRIPTION" cooldown="25" /><!-- Cooldown value must be greater than Entity_Player::MARS_CHARGE_UP_TIME or the item wont work -->
+	<passive	id="593"	gfx="Collectibles_593_Mars.png" name="#MARS_NAME" description="#MARS_DESCRIPTION" cooldown="10" />
 	<passive	id="594"	gfx="Collectibles_594_Jupiter.png" name="#JUPITER_NAME" description="#JUPITER_DESCRIPTION" maxhearts="4" hearts="4" cache="speed range" />
 	<passive	id="595"	gfx="Collectibles_595_Saturnus.png" name="#SATURNUS_NAME" description="#SATURNUS_DESCRIPTION" />
 	<passive	id="596"	gfx="Collectibles_596_Uranus.png" name="#URANUS_NAME" description="#URANUS_DESCRIPTION" cache="tearflag tearcolor" />
@@ -668,7 +668,7 @@
 	<active		id="640"	achievement="418" gfx="Collectibles_640_UrnOfSouls.png" name="#URN_OF_SOULS_NAME" description="#URN_OF_SOULS_DESCRIPTION" maxcharges="0" persistent="true" />
 	<passive	id="641"	achievement="446" gfx="Collectibles_641_Akeldama.png" name="#AKELDAMA_NAME" description="#AKELDAMA_DESCRIPTION" />
 	<active		id="642"	achievement="472" gfx="Collectibles_642_MagicSkin.png" name="#MAGIC_SKIN_NAME" description="#MAGIC_SKIN_DESCRIPTION" maxcharges="6" />
-	<passive	id="643"	achievement="470" gfx="Collectibles_643_Revelation.png" name="#REVELATION_NAME" description="#REVELATION_DESCRIPTION" cache="flying" soulhearts="4" devilprice="2" />
+	<passive	id="643"	achievement="470" gfx="Collectibles_643_Revelation.png" name="#REVELATION_NAME" description="#REVELATION_DESCRIPTION" cache="flying" devilprice="2" />
 	<passive	id="644"	gfx="Collectibles_644_ConsolationPrize.png" name="#CONSOLATION_PRIZE_NAME" description="#CONSOLATION_PRIZE_DESCRIPTION" />
 	<familiar	id="645"	achievement="456" gfx="Collectibles_645_Tinytoma.png" name="#TINYTOMA_NAME" description="#TINYTOMA_DESCRIPTION" />
 	<passive	id="646"	achievement="546" gfx="Collectibles_646_BrimstoneBombs.png" name="#BRIMSTONE_BOMBS_NAME" description="#BRIMSTONE_BOMBS_DESCRIPTION" bombs="5" />
@@ -710,7 +710,7 @@
 	<familiar	id="682"	achievement="467" gfx="Collectibles_682_WormFriend.png" name="#WORM_FRIEND_NAME" description="#WORM_FRIEND_DESCRIPTION" />
 	<passive	id="683"	achievement="468" gfx="Collectibles_683_BoneSpurs.png" name="#BONE_SPURS_NAME" description="#BONE_SPURS_DESCRIPTION" />
 	<passive	id="684"	achievement="461" gfx="Collectibles_684_HungrySoul.png" name="#HUNGRY_SOUL_NAME" description="#HUNGRY_SOUL_DESCRIPTION" />
-	<active		id="685"	achievement="471" gfx="Collectibles_685_JarOfWisps.png" name="#JAR_OF_WISPS_NAME" description="#JAR_OF_WISPS_DESCRIPTION" maxcharges="6" />
+	<active		id="685"	achievement="471" gfx="Collectibles_685_JarOfWisps.png" name="#JAR_OF_WISPS_NAME" description="#JAR_OF_WISPS_DESCRIPTION" maxcharges="12" />
 	<passive	id="686"	achievement="422" gfx="Collectibles_686_SoulLocket.png" name="#SOUL_LOCKET_NAME" description="#SOUL_LOCKET_DESCRIPTION" cache="all" />
 	<active		id="687"	achievement="473" gfx="Collectibles_687_FriendFinder.png" name="#FRIEND_FINDER_NAME" description="#FRIEND_FINDER_DESCRIPTION" maxcharges="4" />
 	<passive	id="688"	achievement="434" gfx="Collectibles_688_InnerChild.png" name="#INNER_CHILD_NAME" description="#INNER_CHILD_DESCRIPTION" persistent="true" cache="range firedelay speed size" addcostumeonpickup="false" />
@@ -828,7 +828,7 @@
 	<trinket description="#SAFETY_SCISSORS_DESCRIPTION" gfx="trinket_063_SafetyScissors.png" id="63" name="#SAFETY_SCISSORS_NAME" />
 	<trinket description="#RAINBOW_WORM_DESCRIPTION" gfx="trinket_064_RainbowWorm.png" id="64" name="#RAINBOW_WORM_NAME" cache="range shotspeed tearflag firedelay"/>
 	<trinket description="#TAPE_WORM_DESCRIPTION" gfx="trinket_065_TapeWorm.png" id="65" name="#TAPE_WORM_NAME" cache="range" />
-	<trinket description="#LAZY_WORM_DESCRIPTION" gfx="trinket_066_LazyWorm.png" id="66" name="#LAZY_WORM_NAME" cache="range shotspeed" />
+	<trinket description="#LAZY_WORM_DESCRIPTION" gfx="trinket_066_LazyWorm.png" id="66" name="#LAZY_WORM_NAME" cache="range shotspeed damage" />
 	<trinket achievement="196" description="#CRACKED_DICE_DESCRIPTION" gfx="trinket_067_CrackedDice.png" id="67" name="#CRACKED_DICE_NAME" />
 	<trinket description="#SUPER_MAGNET_DESCRIPTION" gfx="trinket_068_SuperMagnet.png" id="68" name="#SUPER_MAGNET_NAME" />
 	<trinket description="#FADED_POLAROID_DESCRIPTION" gfx="trinket_069_FadedPolaroid.png" id="69" name="#FADED_POLAROID_NAME" />
@@ -1031,5 +1031,6 @@
 	<null id="129" name="judas birthright stage" cache="damage" persistent="true" />
 	<null id="130" name="judas birthright permanent" cache="damage" persistent="true" />
 	<null id="131" name="esau jr familiar" cache="familiars" persistent="true" />
+	<null id="132" name="transcendance body" persistent="false" />
 <!-- REPENTANCE END -->
 </items>

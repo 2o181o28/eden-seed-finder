@@ -1126,16 +1126,12 @@
 		<Item Id="731" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	</Pool>
 	<Pool Name="devil">
-		<!--Brother Bobby-->
-		<Item Id="8" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--The Book of Belial-->
 		<Item Id="34" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--The Necronomicon-->
 		<Item Id="35" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--Pentagram-->
 		<Item Id="51" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-		<!--Sister Maggy-->
-		<Item Id="67" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--A Quarter-->
 		<Item Id="74" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--The Mark-->
@@ -1204,6 +1200,8 @@
 		<Item Id="259" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--Missing Page 2-->
 		<Item Id="262" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<!--Dry Baby-->
+		<Item Id="265" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--Rotten Baby-->
 		<Item Id="268" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--Headless Baby-->
@@ -2965,7 +2963,7 @@
 		<!--The Candle-->
 		<Item Id="164" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--D20-->
-		<Item Id="166" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Id="166" Weight="0.1" DecreaseBy="0.1" RemoveOn="0.01"/>
 		<!--Mom's Key-->
 		<Item Id="199" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<!--Fanny Pack-->
@@ -4006,6 +4004,8 @@
 		<Item Id="209" Weight="1" DecreaseBy="0.5" RemoveOn="0.1"/>
 		<!--Sad Bombs-->
 		<Item Id="220" Weight="1" DecreaseBy="0.5" RemoveOn="0.1"/>
+		<!--Pyromaniac-->
+		<Item Id="223" Weight="0.2" DecreaseBy="0.1" RemoveOn="0.02"/>
 		<!--Hot Bombs-->
 		<Item Id="256" Weight="1" DecreaseBy="0.5" RemoveOn="0.1"/>
 		<!--Bomber Boy-->
